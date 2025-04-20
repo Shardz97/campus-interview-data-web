@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Placement Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-university"></i> Campus Placement Portal</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active" data-view="dashboard">Dashboard</a></li>
+                    <li><a href="#" data-view="companies">Companies</a></li>
+                    <li><a href="#" data-view="students">Students</a></li>
+                    <li><a href="#" data-view="statistics">Statistics</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Dashboard View -->
+        <section id="dashboard" class="view active">
+            <h2>Placement Dashboard</h2>
+            <div class="stats-cards">
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-building"></i></div>
+                    <div class="card-content">
+                        <h3>Total Companies</h3>
+                        <p id="total-companies">0</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-user-graduate"></i></div>
+                    <div class="card-content">
+                        <h3>Total Students</h3>
+                        <p id="total-students">0</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="card-content">
+                        <h3>Placed Students</h3>
+                        <p id="placed-students">0</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="card-content">
+                        <h3>Placement Rate</h3>
+                        <p id="placement-rate">0%</p>
+                    </div>
+                </div>
+            </div>
+            <div class="recent-section">
+                <h3>Recent Placements</h3>
+                <div class="table-responsive">
+                    <table id="recent-placements">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Company</th>
+                                <th>Role</th>
+                                <th>Package (LPA)</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Placement records will be added here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="upcoming-section">
+                <h3>Upcoming Interviews</h3>
+                <div class="table-responsive">
+                    <table id="upcoming-interviews">
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Role</th>
+                                <th>Date</th>
+                                <th>Eligibility</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Interview records will be added here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Companies View -->
+        <section id="companies" class="view">
+            <div class="section-header">
+                <h2>Companies</h2>
+                <button id="add-company-btn" class="btn btn-primary"><i class="fas fa-plus"></i> Add Company</button>
+            </div>
+            <div class="search-filter">
+                <input type="text" id="company-search" placeholder="Search companies...">
+                <select id="company-filter">
+                    <option value="all">All Sectors</option>
+                    <option value="tech">Technology</option>
+                    <option value="finance">Finance</option>
+                    <option value="consulting">Consulting</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="table-responsive">
+                <table id="companies-table">
+                    <thead>
+                        <tr>
+                            <th>Company Name</th>
+                            <th>Sector</th>
+                            <th>Roles Offered</th>
+                            <th>Package Range (LPA)</th>
+                            <th>Students Hired</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Company records will be added here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Students View -->
+        <section id="students" class="view">
+            <div class="section-header">
+                <h2>Students</h2>
+                <button id="add-student-btn" class="btn btn-primary"><i class="fas fa-plus"></i> Add Student</button>
+            </div>
+            <div class="search-filter">
+                <input type="text" id="student-search" placeholder="Search students...">
+                <select id="student-filter">
+                    <option value="all">All Branches</option>
+                    <option value="cse">Computer Science</option>
+                    <option value="ece">Electronics</option>
+                    <option value="me">Mechanical</option>
+                    <option value="civil">Civil</option>
+                    <option value="other">Other</option>
+                </select>
+                <select id="placement-filter">
+                    <option value="all">All Status</option>
+                    <option value="placed">Placed</option>
+                    <option value="unplaced">Unplaced</option>
+                </select>
+            </div>
+            <div class="table-responsive">
+                <table id="students-table">
+                    <thead>
+                        <tr>
+                            <th>Roll No.</th>
+                            <th>Name</th>
+                            <th>Branch</th>
+                            <th>CGPA</th>
+                            <th>Placement Status</th>
+                            <th>Company</th>
+                            <th>Package (LPA)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Student records will be added here dynamically -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Statistics View -->
+        <section id="statistics" class="view">
+            <h2>Placement Statistics</h2>
+            <div class="charts-container">
+                <div class="chart-card">
+                    <h3>Branch-wise Placement</h3>
+                    <canvas id="branch-chart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Company-wise Hiring</h3>
+                    <canvas id="company-chart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Package Distribution</h3>
+                    <canvas id="salary-chart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Monthly Placement Trend</h3>
+                    <canvas id="trend-chart"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <div id="company-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="company-modal-title">Add Company</h2>
+            <form id="company-form">
+                <div class="form-group">
+                    <label for="company-name">Company Name</label>
+                    <input type="text" id="company-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="company-sector">Sector</label>
+                    <select id="company-sector" required>
+                        <option value="">Select Sector</option>
+                        <option value="tech">Technology</option>
+                        <option value="finance">Finance</option>
+                        <option value="consulting">Consulting</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="company-roles">Roles Offered</label>
+                    <input type="text" id="company-roles" placeholder="e.g. SDE, Data Analyst" required>
+                </div>
+                <div class="form-group">
+                    <label for="min-package">Min Package (LPA)</label>
+                    <input type="number" id="min-package" min="0" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label for="max-package">Max Package (LPA)</label>
+                    <input type="number" id="max-package" min="0" step="0.1" required>
+                </div>
+                <div class="form-group">
+                    <label for="interview-date">Interview Date</label>
+                    <input type="date" id="interview-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="eligibility-criteria">Eligibility Criteria</label>
+                    <textarea id="eligibility-criteria" rows="3" placeholder="e.g. CGPA ≥ 7.5, No backlogs"></textarea>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary cancel-btn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="student-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="student-modal-title">Add Student</h2>
+            <form id="student-form">
+                <div class="form-group">
+                    <label for="student-roll">Roll Number</label>
+                    <input type="text" id="student-roll" required>
+                </div>
+                <div class="form-group">
+                    <label for="student-name">Full Name</label>
+                    <input type="text" id="student-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="student-branch">Branch</label>
+                    <select id="student-branch" required>
+                        <option value="">Select Branch</option>
+                        <option value="cse">Computer Science</option>
+                        <option value="ece">Electronics</option>
+                        <option value="me">Mechanical</option>
+                        <option value="civil">Civil</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="student-cgpa">CGPA</label>
+                    <input type="number" id="student-cgpa" min="0" max="10" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="placement-status">Placement Status</label>
+                    <select id="placement-status" required>
+                        <option value="unplaced">Unplaced</option>
+                        <option value="placed">Placed</option>
+                    </select>
+                </div>
+                <div id="placement-details" style="display: none;">
+                    <div class="form-group">
+                        <label for="placed-company">Company</label>
+                        <select id="placed-company">
+                            <option value="">Select Company</option>
+                            <!-- Companies will be added dynamically -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="placed-role">Role</label>
+                        <input type="text" id="placed-role">
+                    </div>
+                    <div class="form-group">
+                        <label for="placed-package">Package (LPA)</label>
+                        <input type="number" id="placed-package" min="0" step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="placement-date">Placement Date</label>
+                        <input type="date" id="placement-date">
+                    </div>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="button" class="btn btn-secondary cancel-btn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 
